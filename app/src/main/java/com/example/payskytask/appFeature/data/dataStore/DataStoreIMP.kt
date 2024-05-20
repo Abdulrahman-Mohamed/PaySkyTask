@@ -68,13 +68,12 @@ data class DataStoreIMP @Inject constructor(
     override suspend fun insert(model: DataModelItem) {
         if (isNetworkAvailable()) {
             try {
+                dao.insert(model)
+
                 val response = api.insertItem(model)
-                if (response.isSuccessful) {
-                    response.body()?.let { syncedItem ->
-                        dao.insert(syncedItem.copy(isSynched = true))
-                    }
-                }
+
             } catch (e: Exception) {
+                Log.e("TAG", "insert: " + e.localizedMessage)
                 // Handle exception
             }
         } else {

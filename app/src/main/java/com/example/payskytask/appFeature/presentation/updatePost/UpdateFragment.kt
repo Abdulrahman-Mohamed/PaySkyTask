@@ -68,7 +68,7 @@ class UpdateFragment : Fragment() {
                     model = DataModelItem(
                         body = binding.desc.text.toString(),
                         title = binding.title.text.toString(),
-                        userId = 1
+                        userId = 99
                     )
                     viewModel.insertPost(model!!)
                     Toast.makeText(requireContext(), "Insertion Done", Toast.LENGTH_SHORT).show()
