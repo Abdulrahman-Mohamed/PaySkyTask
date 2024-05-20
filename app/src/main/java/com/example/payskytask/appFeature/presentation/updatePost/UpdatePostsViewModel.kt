@@ -24,7 +24,7 @@ class UpdatePostsViewModel @Inject constructor(
     val data: LiveData<DataModelItem> get() = _data
 
     fun updatePost(data: DataModelItem) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             updatePosts(data)
         }
     }
@@ -37,7 +37,7 @@ class UpdatePostsViewModel @Inject constructor(
     }
 
     fun insertPost(data: DataModelItem) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             insetPostUseCase(data)
         }
     }

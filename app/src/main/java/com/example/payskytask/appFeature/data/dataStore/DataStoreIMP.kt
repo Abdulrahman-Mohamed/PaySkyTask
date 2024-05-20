@@ -66,7 +66,6 @@ data class DataStoreIMP @Inject constructor(
     }
 
     override suspend fun insert(model: DataModelItem) {
-        dao.insert(model)
         if (isNetworkAvailable()) {
             try {
                 val response = api.insertItem(model)
